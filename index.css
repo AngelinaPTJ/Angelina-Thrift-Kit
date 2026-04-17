@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Permanent+Marker&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "DM Sans", sans-serif;
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+@layer base {
+  :root {
+    --background: 47 24% 93%;
+    --foreground: 0 0% 17%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+    
+    --primary: 0 65% 51%;
+    --primary-foreground: 47 24% 93%;
+    
+    --secondary: 47 15% 88%;
+    --secondary-foreground: 0 0% 17%;
+    
+    --muted: 45 10% 85%;
+    --muted-foreground: 0 0% 40%;
+    
+    --accent: 0 65% 51%;
+    --accent-foreground: 47 24% 93%;
+    
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 47 24% 93%;
+    
+    --border: 45 10% 80%;
+    --input: 45 10% 80%;
+    --ring: 0 0% 17%;
+    --radius: 0rem;
+  }
+  
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 47 24% 93%;
+    --card: 0 0% 14%;
+    --card-foreground: 47 24% 93%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 47 24% 93%;
+    --primary: 0 65% 51%;
+    --primary-foreground: 47 24% 93%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 47 24% 93%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 45 10% 70%;
+    --accent: 0 65% 51%;
+    --accent-foreground: 47 24% 93%;
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 47 24% 93%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 47 24% 93%;
+  }
+}
+
+@layer components {
+  .font-archivo {
+    font-family: 'Archivo Black', sans-serif;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  
+  .font-marker {
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 0.02em;
+  }
+
+  .craft-paper {
+    background-color: hsl(var(--background));
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='4' result='noise' /%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.15 0' in='noise' result='coloredNoise' /%3E%3CfeBlend mode='multiply' in='SourceGraphic' in2='coloredNoise' /%3E%3C/filter%3E%3Crect width='200' height='200' fill='%23F2F0E9' filter='url(%23paper)'/%3E%3C/svg%3E");
+  }
+
+  .marker-strike {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .marker-strike::after {
+    content: '';
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    top: 50%;
+    height: 4px;
+    background-color: hsl(var(--primary));
+    transform: rotate(-5deg);
+    border-radius: 50% 20% / 10% 40%;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  
+  .analog-shadow {
+    box-shadow: 6px 6px 0px hsl(var(--foreground) / 0.15);
+  }
+
+  .scrapbook-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: multiply;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .photo-tape {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(0,0,0,0.05);
+    z-index: 30;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-collage {
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+  }
+}
